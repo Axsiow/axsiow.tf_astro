@@ -128,4 +128,9 @@ dist
 
 # vscode
 .vscode/
+
+# mac
 .DS_Store
+
+# github
+.github/
