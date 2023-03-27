@@ -4,6 +4,17 @@ import Hero from '../components/Hero.astro'
 import Feature from '../components/Feature.astro'
 import Counter from '../components/Counter.astro'
 import ContentMedia from '../components/ContentMedia.astro'
+import {
+	Accordion,
+	AccordionItem,
+	Breadcrumbs,
+	BreadcrumbsItem,
+	Card,
+	Media,
+	Modal,
+	Notification,
+	Pagination,
+} from 'accessible-astro-components'
 ---
 
 <DefaultLayout title="Home">
@@ -12,57 +23,95 @@ import ContentMedia from '../components/ContentMedia.astro'
 		<div class="container">
 			<h2 class="mb-16 text-6xl">Education</h2>
 			<div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-				<Feature icon="mdi:console-network-outline" title="Grenoble INP - ENSIMAG">
-					<a href="https://ensimag.grenoble-inp.fr/" target="_blank">Master 2 Réseaux Informatiques d’Entreprise (RIE)</a>
-				</Feature>
-				<Feature icon="mdi:router-wireless-settings" title="EPSI Grenoble">
-					<a href="https://epsi.fr/" target="_blank">Master 1 d'ingénierie Expert en Informatique et Système d’Information</a>
-				</Feature>
-				<Feature icon="fluent:window-dev-tools-16-filled" title="EPSI Grenoble">
-					<a href="https://epsi.fr/" target="_blank">Bachelor SYSOPS/Administrateur Système Réseaux et Bases de Données</a> 
-				</Feature>
+				<div class="card">
+					<div class="card__image">
+					  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBpuvBeDgSIq4UCBZmmuVwFxo78Zrfh1LxQL95bE6sKJyG9DVr6JkPDa5xITn5kSWkxd4&usqp=CAU" alt="Logo Grenoble INP ENSIMAG">
+					</div>
+					<div class="card__content">
+						<h3>Grenoble INP - ENSIMAG</h3>
+						<p>Master 2 Réseaux Informatiques d’Entreprise (RIE)</p>
+						<small>2022 - 2023</small>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card__image">
+					  <img src="https://www.lafrenchfab.fr/storage/2022/03/logoepsi.png" alt="Logo EPSI">
+					</div>
+					<div class="card__content">
+						<h3>EPSI Grenoble</h3>
+						<p>Master 1 d'ingénierie Expert en Informatique et Système d’Information</p>
+						<small>2021 - 2022</small>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card__image">
+					  <img src="https://www.lafrenchfab.fr/storage/2022/03/logoepsi.png" alt="Logo EPSI">
+					</div>
+					<div class="card__content">
+						<h3>EPSI Grenoble</h3>
+						<p>Bachelor SYSOPS/Administrateur Système Réseaux et Bases de Données</p>
+						<small>2018 - 2021</small>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
 	<section class="my-64">
 		<div class="container">
-			<h2 class="mb-16 text-6xl">Experience</h2>
+			<h2 class="mb-16 text-6xl">Experiences</h2>
 			<ContentMedia imgSrc="/logoSGAC.jpg">
-				<h2><a href="https://spacegeneration.org" target="_blank">Space Generation Advisory CouncilSpace Generation Advisory Council (SGAC)</a>| September 2022 - Today</h2>
-				<h3>Space and Cyber Security Project Group</h3>
-				<p class="text-2xl"> The SGAC is a global non-governmental, non-profit (US 501(c)3) organisation and network which aims to represent university students and young space professionals to the United Nations, space agencies, industry, and academia.
-					<ul>
-						<li>• Reflection around cybersecurity in the international space sector</li>
-						<li>• co-organization hackathon</li>
-						<li>• co-writing of an article for the 74th International Astronautical Congress (IAC 2023) "Assessing cybersecurity measures in space and cyber laws" with Ms. Clémence Poirier, European Space Policy Institute (ESPI)</li>
-					</ul>
-				</p>
+				<div class="space-content">
+					<h2>Space Generation Advisory CouncilSpace Generation Advisory Council (SGAC) | Septebre 2022 - present </h2>
+					<Accordion>
+						<p>The SGAC is a global non-governmental, non-profit (US 501(c)3) organisation and network which aims to represent university students and young space professionals to the United Nations, space agencies, industry, and academia.</p>
+						<br>
+						<AccordionItem header="My missons for SGAC !">
+							<p class="text-2xl">
+								<ul>
+									<li>• Reflection around cybersecurity in the international space sector</li>
+									<li>• co-organization hackathon</li>
+									<li>• co-writing of an article for the 74th International Astronautical Congress (IAC 2023) "Assessing cybersecurity measures in space and cyber laws" with Ms. Clémence Poirier, European Space Policy Institute (ESPI)</li>
+								</ul>
+							</p>
+						<a href="https://spacegeneration.org/">SGAC Website !</a>
+						</AccordionItem>
+					</Accordion>
+				</div>
 			</ContentMedia>
 			<ContentMedia imgSrc="/logoST.jpg" reverseImg={true}>
-				<h2><a href="https://st.com" target="_blank">STMicroelectronics Crolles</a>| October 2020 - Today</h2>
-				<p class="text-2xl">STMicroelectronics is a global semiconductor company that designs and manufactures a wide range of electronics and semiconductor solutions for various industries such as automotive, industrial, personal electronics, space industrie, and communications.
-					<ul>
-						<li>• Correction of incidents detected on LAN networks of STM Crolles</li>
-						<li>• Reduced WiFi incidents</li>
-						<li>• Replacement of Cisco equipment as part of obsolescence management</li>
-						<li>• Improved alarm detection in Zabbix tool by improving the management of SNMP Traps sent by Cisco equipment</li>
-						<li>• Implementation of network equipment monitoring with Zabbix Graphana</li>
-						<li>• Monitoring of pentest carried out on the infrastructure and participation in the remediation of the attack</li>
-						<li>• Integration of Cisco Prime tools for the new Cisco switch ranges</li>
-						<li>• Participation in the migration of the Facilities network to Cisco equipment with a security and reliability objective in conjunction with the Facilities teams</li>
-						<li>• Addition of manageable switches in a laboratory area to replace unmonitored equipment and set up NAC locking in conjunction with the laboratory teams.</li>
-						<li>• Configuration of new switches for the ST Crolles network</li>
-						<li>• Generation of configurations for the deployment of a fleet of switches</li>
-						<li>• Support of existing network equipment (around 300 active equipment)</li>
-						<li>• Cisco and Palo Alto firewall configuration</li>
-						<li>• Addition of modules to our network connection management tool (cabling)</li>
-						<li>• Configuration and development use on the Cisco Prime solution</li>
-						<li>• Documentation of the missions carried out to guarantee their future use and maintenance</li>
-					</ul>
-				</p>
+				<div class="space-content">
+					<h2>STMicroelectronics Crolles | October 2020 - present</h2>
+					<Accordion>
+						<p>STMicroelectronics is a global semiconductor company that designs and manufactures a wide range of electronics and semiconductor solutions for various industries such as automotive, industrial, personal electronics, space industrie, and communications.</p>
+						<br>
+						<AccordionItem header="My missons for ST Crolles !">
+							<p class="text-2xl">
+								<ul>
+									<li>• Correction of incidents detected on LAN networks of STM Crolles</li>
+									<li>• Reduced WiFi incidents</li>
+									<li>• Replacement of Cisco equipment as part of obsolescence management</li>
+									<li>• Improved alarm detection in Zabbix tool by improving the management of SNMP Traps sent by Cisco equipment</li>
+									<li>• Implementation of network equipment monitoring with Zabbix Graphana</li>
+									<li>• Monitoring of pentest carried out on the infrastructure and participation in the remediation of the attack</li>
+									<li>• Integration of Cisco Prime tools for the new Cisco switch ranges</li>
+									<li>• Participation in the migration of the Facilities network to Cisco equipment with a security and reliability objective in conjunction with the Facilities teams</li>
+									<li>• Addition of manageable switches in a laboratory area to replace unmonitored equipment and set up NAC locking in conjunction with the laboratory teams.</li>
+									<li>• Configuration of new switches for the ST Crolles network</li>
+									<li>• Generation of configurations for the deployment of a fleet of switches</li>
+									<li>• Support of existing network equipment (around 300 active equipment)</li>
+									<li>• Cisco and Palo Alto firewall configuration</li>
+									<li>• Addition of modules to our network connection management tool (cabling)</li>
+									<li>• Configuration and development use on the Cisco Prime solution</li>
+									<li>• Documentation of the missions carried out to guarantee their future use and maintenance</li>
+								</ul>
+							</p>
+						<a href="https://st.com">ST website !</a>
+						</AccordionItem>
+					</Accordion>
+				</div>
 			</ContentMedia>
 			<ContentMedia imgSrc="/logoLeonix.jpg">
-				<h2><a href="https://www.leonix.fr/" target="_blank">Leonix Telecom</a>| May - June 2019 </h2>
+				<h2>Leonix Telecom | May - June 2019 </h2>
 				<p class="text-2xl"> 6-week internship in the engineering department in collaboration with the network teams of the operator Leonix Telecom.
 				</p>
 			</ContentMedia>
@@ -75,7 +124,7 @@ import ContentMedia from '../components/ContentMedia.astro'
 	</section>
 	<section class="mt-64 mb-32">
 		<div class="container">
-			<h2 class="mb-16 text-6xl">Counters</h2>
+			<h2 class="mb-16 text-6xl">Randoms stats</h2>
 			<div class="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-4">
 				<Counter count="1%" title="top rank" sub="on TryHackMe"/>
 				<Counter count="143" title="rooms completed" sub="on TryHackMe"/>
