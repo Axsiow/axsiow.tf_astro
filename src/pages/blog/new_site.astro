@@ -4,24 +4,30 @@ import { Card, Pagination, Breadcrumbs, BreadcrumbsItem } from 'accessible-astro
 
 export async function getStaticPaths() {
   	const data = [{
-		title: "New Site",
+		title: 'New Site',
 		id: "1",
 		author: "Axsiow",
+		desc: "test looooong",
 		tags: "test",
 		},
 	];
 
-	return data.map(({ title, id, author, tags }) => {
-    return {
-      params: { id:'1' },
-      props: { title, author },
-    };
-  });
+	return data.map(({title, id, author, tags}) => {
+		return {
+		params: { title },
+		props: { id, author, tags },
+		};
+  	});
 }
 
-const { title, id, author } = Astro.props;
+const { title = "New Site",
+		id = "1",
+		author = "Axsiow",
+		desc = "test looooooong",
+		tags = "test"
+} = Astro.props;
 ---
-<DefaultLayout title="Blog" description="test">
+<DefaultLayout title=Blog -{title} description={desc}>
 	<section class="my-12">
 		<div class="space-content container">
 			<Breadcrumbs>
@@ -29,11 +35,9 @@ const { title, id, author } = Astro.props;
 				<BreadcrumbsItem href="/blog" label="Blog" />
 				<BreadcrumbsItem currentPage={true} label={title} />
 			</Breadcrumbs>
-			<h1>Blog</h1>
-			<p class="text-2xl">TEST</p>
-			<h1>The current URL pathname is: {Astro.url.pathname}</h1>
-			<h1>The title is :{id}</h1>
-		</div>
+			<h1>{title}</h1>
+      		<p>Author : {author}</p>
+			<p>Tags : {tags}</p>
 	</section>
 </DefaultLayout>
   
