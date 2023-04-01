@@ -1,0 +1,55 @@
+---
+import DefaultLayout from '../layouts/DefaultLayout.astro'
+import Hero from '../components/Hero.astro'
+import Feature from '../components/Feature.astro'
+import Counter from '../components/Counter.astro'
+import ContentMedia from '../components/ContentMedia.astro'
+import {
+	Accordion,
+	AccordionItem,
+	Breadcrumbs,
+	BreadcrumbsItem,
+	Card,
+	Media,
+	Modal,
+	Notification,
+	Pagination,
+} from 'accessible-astro-components'
+
+import BlogPost from '../components/BlogPost.astro';
+const allPosts = await Astro.glob('../pages/blog/*.md');
+const { page } = Astro.props
+---
+
+<DefaultLayout title="Blog" description="test">
+	<section class="my-12">
+		<div class="space-content container">
+			<h1>Blog posts:</h1>
+		</div>
+	</section>
+	<section class="my-12">
+		<div class="container">
+			<br>
+			<ul>
+			{allPosts.map(post => <li><a href={post.url}>{post.frontmatter.title}</a><br> by : {post.frontmatter.author}</li>)}
+			</ul>
+		</div>
+  	</section>
+</DefaultLayout>
+
+<style lang="scss">
+ul {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 4rem;
+
+	@media (min-width: 550px) {
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 2rem;
+	}
+
+	@media (min-width: 950px) {
+	grid-template-columns: repeat(3, 1fr);
+	}
+}
+</style>

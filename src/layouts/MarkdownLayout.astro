@@ -1,5 +1,16 @@
 ---
 import DefaultLayout from './DefaultLayout.astro'
+import {
+	Accordion,
+	AccordionItem,
+	Breadcrumbs,
+	BreadcrumbsItem,
+	Card,
+	Media,
+	Modal,
+	Notification,
+	Pagination,
+} from 'accessible-astro-components'
 
 const { frontmatter } = Astro.props
 ---
@@ -7,6 +18,11 @@ const { frontmatter } = Astro.props
 <DefaultLayout title={frontmatter.title}>
 	<div class="container">
 		<div class="space-content my-12">
+			<Breadcrumbs>
+				<BreadcrumbsItem href="/" label="Home" />
+				<BreadcrumbsItem href="/blog" label="Blog" />
+				<BreadcrumbsItem currentPage={true} label={frontmatter.title} />
+			</Breadcrumbs>
 		<slot />
 		</div>
 	</div>
